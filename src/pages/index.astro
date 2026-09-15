@@ -1,17 +1,56 @@
 ---
+import "../../src/styles/global.css";
 
+import video_webm from "../media/background_video.webm";
+import video_mp4 from "../media/background_video.mp4";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="overflow-hidden">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      class="video-fondo"
+    >
+      <source src={video_webm} type="video/webm" />
+      <source src={video_mp4} type="video/mp4" />
+      Tu navegador no soporta vídeos en HTML5.
+    </video>
+    <main class="grid grid-cols-[60%_40%] h-screen p-20">
+      <section id="info" class="flex flex-col gap-10">
+        <div>
+          <h1 class="text-9xl font-fold text-primary">RUBÉN<br />TOBÍAS</h1>
+          <div class="flex flex-col text-2xl text-primary/80">
+            <a href="mailto:rtpfm19@gmail.com" class="w-fit"
+              >rtpfm19@gmail.com</a
+            >
+            <a
+              href="https://www.linkedin.com/in/ruben-tobias-pascual-38a30a431/"
+              class="w-fit">ruben-tobias-pascual</a
+            >
+            <a href="https://github.com/rtobiasp" class="w-fit">rtobiasp</a>
+          </div>
+        </div>
+        <nav class="text-primary">
+          <ul>
+            <li>SOBRE MÍ</li>
+            <li>PROYECTOS</li>
+          </ul>
+        </nav>
+      </section>
+      <section id="proyects" class="bg-amber-200/20"></section>
+    </main>
+  </body>
 </html>
