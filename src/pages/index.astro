@@ -1,5 +1,7 @@
 ---
 import "../../src/styles/global.css";
+import ContactLinks from "../../components/ui/ContactLinks.astro";
+import SectionNav from "../../components/ui/SectionNav.astro";
 
 import video_webm from "../media/background_video.webm";
 import video_mp4 from "../media/background_video.mp4";
@@ -30,25 +32,17 @@ import video_mp4 from "../media/background_video.mp4";
     </video>
     <main class="grid grid-cols-[60%_40%] h-screen p-20">
       <section id="info" class="flex flex-col gap-10">
-        <div>
+        <div class="flex flex-col gap-6">
           <h1 class="text-9xl font-fold text-primary">RUBÉN<br />TOBÍAS</h1>
-          <div class="flex flex-col text-2xl text-primary/80">
-            <a href="mailto:rtpfm19@gmail.com" class="w-fit"
-              >rtpfm19@gmail.com</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ruben-tobias-pascual-38a30a431/"
-              class="w-fit">ruben-tobias-pascual</a
-            >
-            <a href="https://github.com/rtobiasp" class="w-fit">rtobiasp</a>
-          </div>
+          <p
+            class="flex items-center gap-4 text-lg font-medium uppercase tracking-[0.35em] text-primary/90 md:text-xl"
+          >
+            <span aria-hidden="true" class="h-px w-12 bg-primary/60"></span>
+            Desarrollador Full-Stack
+          </p>
+          <ContactLinks />
         </div>
-        <nav class="text-primary">
-          <ul>
-            <li>SOBRE MÍ</li>
-            <li>PROYECTOS</li>
-          </ul>
-        </nav>
+        <SectionNav />
       </section>
       <section id="proyects" class="bg-amber-200/20"></section>
     </main>

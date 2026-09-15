@@ -1,0 +1,41 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items?: NavItem[];
+  class?: string;
+}
+
+const {
+  items = [
+    { label: "Sobre mí", href: "#sobre-mi" },
+    { label: "Proyectos", href: "#proyectos" },
+  ],
+  class: className = "",
+} = Astro.props;
+---
+
+<nav aria-label="Navegación principal" class={className}>
+  <ul class="flex flex-col gap-5">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="group flex w-fit items-center gap-4 rounded text-sm font-medium uppercase tracking-[0.25em] text-primary/60 transition-colors duration-300 hover:text-primary focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            <span aria-hidden="true" class="relative flex h-4 w-4 items-center justify-center">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary/40 transition-all duration-300 ease-out group-hover:h-2.5 group-hover:w-2.5 group-hover:bg-primary group-focus-visible:h-2.5 group-focus-visible:w-2.5 group-focus-visible:bg-primary" />
+            </span>
+            <span class="transition-transform duration-300 ease-out group-hover:translate-x-1">
+              {item.label}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

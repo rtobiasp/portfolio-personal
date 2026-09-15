@@ -1,0 +1,185 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const email = "rtpfm19@gmail.com";
+const linkedin = {
+  href: "https://www.linkedin.com/in/ruben-tobias-pascual-38a30a431/",
+  label: "ruben-tobias-pascual",
+};
+const github = {
+  href: "https://github.com/rtobiasp",
+  label: "rtobiasp",
+};
+---
+
+<div class={`flex flex-col gap-3 text-xl md:text-2xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] ${className}`}>
+  {/* Email — acción principal */}
+  <div class="flex w-fit items-center gap-2">
+    <a
+      href={`mailto:${email}`}
+      aria-label={`Enviar email a ${email}`}
+      class="group flex w-fit items-center gap-3 rounded font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        class="shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+      >
+        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+      </svg>
+      <span>{email}</span>
+    </a>
+    <button
+      type="button"
+      data-copy-email={email}
+      aria-label="Copiar email al portapapeles"
+      title="Copiar email"
+      class="rounded p-1.5 text-primary/70 transition-colors hover:bg-white/10 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      <svg
+        data-icon="copy"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+      </svg>
+      <svg
+        data-icon="check"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        class="hidden text-emerald-300"
+      >
+        <path d="M20 6 9 17l-5-5"></path>
+      </svg>
+    </button>
+    <span data-copy-feedback aria-live="polite" class="hidden text-sm text-emerald-300">Copiado</span>
+  </div>
+
+  {/* LinkedIn */}
+  <a
+    href={linkedin.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn de Rubén Tobías (se abre en pestaña nueva)"
+    class="group flex w-fit items-center gap-3 rounded text-primary/80 underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      class="shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <rect width="4" height="12" x="2" y="9"></rect>
+      <circle cx="4" cy="4" r="2"></circle>
+    </svg>
+    <span>{linkedin.label}</span>
+    <span aria-hidden="true" class="text-sm opacity-0 transition-opacity group-hover:opacity-60">↗</span>
+  </a>
+
+  {/* GitHub */}
+  <a
+    href={github.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub de rtobiasp (se abre en pestaña nueva)"
+    class="group flex w-fit items-center gap-3 rounded text-primary/80 underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      class="shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+    >
+      <path
+        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+      ></path>
+      <path d="M9 18c-4.51 2-5-2-7-2"></path>
+    </svg>
+    <span>{github.label}</span>
+    <span aria-hidden="true" class="text-sm opacity-0 transition-opacity group-hover:opacity-60">↗</span>
+  </a>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
+
+  for (const button of buttons) {
+    button.addEventListener("click", async () => {
+      const email = button.getAttribute("data-copy-email");
+      if (!email) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        // Fallback para contextos sin Clipboard API (http, navegadores viejos)
+        const textarea = document.createElement("textarea");
+        textarea.value = email;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      const copyIcon = button.querySelector<SVGElement>('[data-icon="copy"]');
+      const checkIcon = button.querySelector<SVGElement>('[data-icon="check"]');
+      const feedback = button.parentElement?.querySelector<HTMLElement>("[data-copy-feedback]");
+
+      copyIcon?.classList.add("hidden");
+      checkIcon?.classList.remove("hidden");
+      feedback?.classList.remove("hidden");
+
+      window.setTimeout(() => {
+        copyIcon?.classList.remove("hidden");
+        checkIcon?.classList.add("hidden");
+        feedback?.classList.add("hidden");
+      }, 2000);
+    });
+  }
+</script>
