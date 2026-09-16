@@ -8,8 +8,7 @@ import video_mp4 from "../media/background_video.mp4";
 import Proyects from "../../components/Proyects.astro";
 import AboutMe from "../../components/AboutMe.astro";
 
-// TODO: sustituye esta URL por el dominio final en producción.
-const SITE_URL = "https://www.rubentobias.dev";
+const SITE_URL = "https://ruben-tobias-dev.vercel.app";
 const pageTitle = "Rubén Tobías | Desarrollador Full-Stack en Logroño";
 const pageDescription =
   "Portfolio de Rubén Tobías, desarrollador Full-Stack en Logroño (La Rioja): proyectos con Astro, Next.js, React, Node.js y .NET, experiencia laboral, formación y contacto.";
@@ -32,7 +31,6 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    {/* Open Graph */}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Rubén Tobías — Desarrollador Full-Stack" />
     <meta property="og:locale" content="es_ES" />
@@ -42,7 +40,6 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:alt" content="Portfolio de Rubén Tobías, desarrollador Full-Stack" />
 
-    {/* Twitter Cards */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
@@ -131,7 +128,6 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
 
       function applyReducedMotion() {
         if (reducedMotionQuery.matches) {
-          // Sin scroll suavizado ni vídeo en movimiento si el usuario lo pide
           lenis?.destroy();
           lenis = null;
           bgVideo?.pause();
@@ -165,14 +161,12 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
 
       initLenis();
       applyReducedMotion();
-      // Activa / desactiva el scroll suavizado interno al cambiar de breakpoint
       desktopQuery.addEventListener("change", initLenis);
       reducedMotionQuery.addEventListener("change", () => {
         initLenis();
         applyReducedMotion();
       });
 
-      // Limpieza si Astro recarga / navega
       document.addEventListener("astro:before-swap", () => lenis?.destroy(), {
         once: true,
       });
@@ -200,7 +194,6 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
         const activePanel = document.getElementById(targetId);
         if (activePanel && !reducedMotionQuery.matches) {
           activePanel.classList.remove("section-enter");
-          // Reinicia la animación de entrada
           void activePanel.offsetWidth;
           activePanel.classList.add("section-enter");
         }
@@ -222,7 +215,6 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
           const target = tab.dataset.sectionBtn;
           if (target) showPanel(target);
         });
-        // Navegación por teclado según el patrón Tabs de APG
         tab.addEventListener("keydown", (event) => {
           if (event.key === "ArrowRight") {
             event.preventDefault();

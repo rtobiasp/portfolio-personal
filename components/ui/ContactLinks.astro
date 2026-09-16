@@ -17,7 +17,6 @@ const github = {
 ---
 
 <div class={`flex w-full min-w-0 flex-col gap-3 text-base drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg md:text-xl lg:text-2xl ${className}`}>
-  {/* Email — acción principal */}
   <div class="flex w-full min-w-0 max-w-full items-center gap-2">
     <a
       href={`mailto:${email}`}
@@ -85,7 +84,6 @@ const github = {
     <span data-copy-feedback aria-live="polite" class="hidden text-sm text-emerald-300">Copiado</span>
   </div>
 
-  {/* LinkedIn */}
   <a
     href={linkedin.href}
     target="_blank"
@@ -114,7 +112,6 @@ const github = {
     <span aria-hidden="true" class="shrink-0 text-sm opacity-0 transition-opacity group-hover:opacity-60">↗</span>
   </a>
 
-  {/* GitHub */}
   <a
     href={github.href}
     target="_blank"
@@ -156,7 +153,6 @@ const github = {
       try {
         await navigator.clipboard.writeText(email);
       } catch {
-        // Fallback para contextos sin Clipboard API (http, navegadores viejos)
         const textarea = document.createElement("textarea");
         textarea.value = email;
         textarea.style.position = "fixed";

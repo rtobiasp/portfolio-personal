@@ -35,7 +35,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Enlace "saltar al contenido" — solo visible al recibir foco */
 .skip-link {
     position: absolute;
     top: -100px;
@@ -58,7 +57,6 @@ html {
     outline-offset: 2px;
 }
 
-/* Foco visible consistente en todo el sitio */
 :where(a, button, [tabindex]):focus-visible {
     outline: 2px solid #fff;
     outline-offset: 3px;
@@ -95,7 +93,6 @@ img, video {
   display: none;
 }
 
-/* Lenis recommended styles */
 html.lenis,
 html.lenis body {
   height: auto;

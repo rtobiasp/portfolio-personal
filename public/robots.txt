@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# TODO: actualiza el dominio cuando despliegues a producción.
-Sitemap: https://www.rubentobias.dev/sitemap.xml
+Sitemap: https://ruben-tobias-dev.vercel.app/sitemap.xml
