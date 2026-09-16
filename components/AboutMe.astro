@@ -66,14 +66,15 @@ const contacto = {
 };
 ---
 
-<section id="sobre-mi" aria-label="Sobre mí" class="flex min-w-0 flex-col gap-6">
+<section aria-labelledby="sobre-mi-titulo" class="flex min-w-0 flex-col gap-6">
+  <h2 id="sobre-mi-titulo" class="font-cormorant-garamond text-3xl leading-tight text-primary sm:text-4xl">Sobre mí</h2>
   <article
     class="group relative flex min-w-0 flex-col gap-6 overflow-hidden rounded-3xl border border-white/10 bg-black/45 p-5 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 ease-out hover:border-white/25 hover:bg-black/55 sm:gap-8 sm:p-6 md:p-7"
   >
     {/* Cabecera */}
     <div class="flex flex-col gap-2">
       <p
-        class="text-sm font-medium uppercase tracking-[0.25em] text-primary/60"
+        class="text-sm font-medium uppercase tracking-[0.25em] text-primary/70"
       >
         Desarrollador web
       </p>
@@ -95,20 +96,20 @@ const contacto = {
 
     {/* Experiencia */}
     <div class="flex flex-col gap-4">
-      <h4
-        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      <h2
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70"
       >
         Experiencia laboral
-      </h4>
+      </h2>
       <ol class="flex flex-col gap-6">
         {
           experiencia.map((item) => (
             <li class="flex min-w-0 flex-col gap-2">
               <div class="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-2">
-                <p class="font-cormorant-garamond text-lg leading-tight text-primary sm:text-xl">
+                <h3 class="font-cormorant-garamond text-lg leading-tight text-primary sm:text-xl">
                   {item.puesto}
-                </p>
-                <p class="text-xs uppercase tracking-[0.2em] text-primary/40">
+                </h3>
+                <p class="text-xs uppercase tracking-[0.2em] text-primary/60">
                   {item.duracion}
                 </p>
               </div>
@@ -136,11 +137,11 @@ const contacto = {
 
     {/* Formación */}
     <div class="flex flex-col gap-4">
-      <h4
-        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      <h2
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70"
       >
         Formación académica
-      </h4>
+      </h2>
       <ul class="flex flex-col gap-3">
         {
           formacion.map((item) => (
@@ -162,11 +163,11 @@ const contacto = {
 
     {/* Habilidades */}
     <div class="flex flex-col gap-4">
-      <h4
-        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      <h2
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70"
       >
         Habilidades
-      </h4>
+      </h2>
       <ul aria-label="Habilidades" class="flex flex-wrap gap-2">
         {
           habilidades.map((habilidad) => (
@@ -180,11 +181,11 @@ const contacto = {
 
     {/* Idiomas */}
     <div class="flex flex-col gap-4">
-      <h4
-        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      <h2
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70"
       >
         Idiomas
-      </h4>
+      </h2>
       <dl class="flex flex-col gap-2">
         {
           idiomas.map((item) => (
@@ -204,11 +205,11 @@ const contacto = {
 
     {/* Contacto */}
     <div class="flex flex-col gap-4">
-      <h4
-        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      <h2
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70"
       >
         Contacto
-      </h4>
+      </h2>
       <address class="flex flex-col gap-2 text-sm not-italic text-primary/70">
         <p>{contacto.ubicacion}</p>
         <a

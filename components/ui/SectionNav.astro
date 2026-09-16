@@ -18,16 +18,20 @@ const {
 } = Astro.props;
 ---
 
-<nav aria-label="Navegación principal" class={className}>
-  <ul class="flex flex-row flex-wrap gap-x-6 gap-y-3 lg:flex-col lg:gap-5" role="list">
+<nav aria-label="Secciones del portfolio" class={className}>
+  <ul role="tablist" aria-label="Secciones del portfolio" class="flex flex-row flex-wrap gap-x-6 gap-y-3 lg:flex-col lg:gap-5">
     {
       items.map((item, index) => (
         <li>
           <button
             type="button"
+            role="tab"
+            id={`tab-${item.target}`}
+            aria-selected={index === 0 ? "true" : "false"}
+            aria-controls={item.target}
+            tabindex={index === 0 ? 0 : -1}
             data-section-btn={item.target}
             data-active={index === 0 ? "true" : "false"}
-            aria-current={index === 0 ? "true" : undefined}
             class="group flex w-fit items-center gap-2.5 rounded text-xs font-medium uppercase tracking-[0.2em] text-primary/60 transition-colors duration-300 hover:text-primary hover:cursor-pointer focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white data-[active=true]:text-primary sm:gap-4 sm:text-sm sm:tracking-[0.25em]"
           >
             <span
