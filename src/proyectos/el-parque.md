@@ -9,6 +9,6 @@ technologies:
   - Swiper
   - PhotoSwipe
 img: "/src/proyectos/media/el-parque.png"
-link_web: "https://el-parque-ix4xx04s4-ruben-proyects.vercel.app"
+link_web: "https://el-parque-rho.vercel.app"
 link_github: "https://github.com/rtobiasp/el-parque"
 ---
