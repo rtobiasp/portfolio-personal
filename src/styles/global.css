@@ -11,7 +11,7 @@
 @font-face {
     font-family: "Montserrat";
     src: url("../assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2");
-    font-size: 100 900;
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
@@ -28,6 +28,19 @@ h1, h2, h3, h4 {
 
 p, span, a {
     font-family: var(--font-montserrat);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-width: 0;
+    overflow-x: clip;
+}
+
+img, video {
+    max-width: 100%;
 }
 
 .video-fondo {

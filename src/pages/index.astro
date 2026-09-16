@@ -14,7 +14,7 @@ import AboutMe from "../../components/AboutMe.astro";
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
@@ -34,21 +34,21 @@ import AboutMe from "../../components/AboutMe.astro";
         Tu navegador no soporta vídeos en HTML5.
       </video>
     </div>
-    <main class="grid h-screen grid-cols-[60%_40%] p-20">
-      <section id="info" class="flex min-h-0 flex-col gap-10">
-        <div class="flex flex-col gap-6">
-          <h1 class="text-9xl font-fold text-primary">RUBÉN<br />TOBÍAS</h1>
+    <main class="mx-auto flex min-h-svh w-full max-w-360 flex-col gap-10 px-5 py-10 sm:px-8 sm:py-12 lg:grid lg:h-screen lg:min-h-0 lg:grid-cols-[55%_45%] lg:gap-6 lg:overflow-hidden lg:p-12 xl:grid-cols-[60%_40%] xl:p-20">
+      <section id="info" class="flex min-h-0 flex-col justify-center gap-8 lg:gap-10">
+        <div class="flex flex-col gap-5 sm:gap-6">
+          <h1 class="font-cormorant-garamond text-[clamp(3.5rem,14vw,6rem)] leading-[0.9] text-primary sm:text-8xl xl:text-9xl">RUBÉN<br />TOBÍAS</h1>
           <p
-            class="flex items-center gap-4 text-lg font-medium uppercase tracking-[0.35em] text-primary/90 md:text-xl"
+            class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium uppercase tracking-[0.2em] text-primary/90 sm:text-base sm:tracking-[0.35em] md:text-xl"
           >
-            <span aria-hidden="true" class="h-px w-12 bg-primary/60"></span>
+            <span aria-hidden="true" class="h-px w-8 bg-primary/60 sm:w-12"></span>
             Desarrollador Full-Stack
           </p>
           <ContactLinks />
         </div>
         <SectionNav />
       </section>
-      <section id="panel-derecha" class="min-h-0 h-full overflow-y-auto pr-1">
+      <section id="panel-derecha" class="min-h-0 h-auto overflow-visible lg:h-full lg:overflow-y-auto lg:pr-1">
         <div id="panel-content">
           <div id="panel-sobre-mi" data-section-panel hidden>
             <AboutMe />
@@ -65,22 +65,35 @@ import AboutMe from "../../components/AboutMe.astro";
 
       const wrapper = document.getElementById("panel-derecha");
       const content = document.getElementById("panel-content");
+      const desktopQuery = window.matchMedia("(min-width: 1024px)");
 
       let lenis: Lenis | null = null;
-      if (wrapper && content) {
-        lenis = new Lenis({
-          wrapper,
-          content,
-          autoRaf: true,
-          lerp: 0.09,
-          smoothWheel: true,
-        });
 
-        // Limpieza si Astro recarga / navega
-        document.addEventListener("astro:before-swap", () => lenis?.destroy(), {
-          once: true,
-        });
+      function initLenis() {
+        if (wrapper && content && desktopQuery.matches) {
+          if (!lenis) {
+            lenis = new Lenis({
+              wrapper,
+              content,
+              autoRaf: true,
+              lerp: 0.09,
+              smoothWheel: true,
+            });
+          }
+        } else {
+          lenis?.destroy();
+          lenis = null;
+        }
       }
+
+      initLenis();
+      // Activa / desactiva el scroll suavizado interno al cambiar de breakpoint
+      desktopQuery.addEventListener("change", initLenis);
+
+      // Limpieza si Astro recarga / navega
+      document.addEventListener("astro:before-swap", () => lenis?.destroy(), {
+        once: true,
+      });
 
       const buttons = Array.from(
         document.querySelectorAll<HTMLButtonElement>("[data-section-btn]"),
@@ -127,6 +140,10 @@ import AboutMe from "../../components/AboutMe.astro";
     </script>
 
     <style>
+      .font-cormorant-garamond {
+        font-family: var(--font-cormorant-garamond);
+      }
+
       .section-enter {
         animation: section-enter 0.45s ease-out both;
       }
