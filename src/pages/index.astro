@@ -33,13 +33,19 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Rubén Tobías — Desarrollador Full-Stack" />
+    <meta
+      property="og:site_name"
+      content="Rubén Tobías — Desarrollador Full-Stack"
+    />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content="Portfolio de Rubén Tobías, desarrollador Full-Stack" />
+    <meta
+      property="og:image:alt"
+      content="Portfolio de Rubén Tobías, desarrollador Full-Stack"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
@@ -66,7 +72,16 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
           "https://www.linkedin.com/in/ruben-tobias-pascual-38a30a431/",
           "https://github.com/rtobiasp",
         ],
-        knowsAbout: ["Astro", "Next.js", "React", "Node.js", "TypeScript", ".NET", "WordPress", "Drupal"],
+        knowsAbout: [
+          "Astro",
+          "Next.js",
+          "React",
+          "Node.js",
+          "TypeScript",
+          ".NET",
+          "WordPress",
+          "Drupal",
+        ],
       })}
     />
   </head>
@@ -89,15 +104,23 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
         Tu navegador no soporta vídeos en HTML5.
       </video>
     </div>
-    <main id="contenido" class="mx-auto flex min-h-svh w-full max-w-360 flex-col gap-10 px-5 py-10 sm:px-8 sm:py-12 lg:grid lg:h-screen lg:min-h-0 lg:grid-cols-[55%_45%] lg:gap-6 lg:overflow-hidden lg:p-12 xl:grid-cols-[60%_40%] xl:p-20">
+    <main
+      id="contenido"
+      class="mx-auto flex min-h-svh w-full max-w-360 flex-col gap-10 px-5 py-10 sm:px-8 sm:py-12 lg:grid lg:h-screen lg:min-h-0 lg:grid-cols-[55%_45%] lg:gap-6 lg:overflow-hidden lg:p-12 xl:grid-cols-[60%_40%] xl:p-20"
+    >
       <header class="flex min-h-0 flex-col justify-center gap-8 lg:gap-10">
         <div class="flex flex-col gap-5 sm:gap-6">
-          <h1 class="font-cormorant-garamond text-[clamp(3.5rem,14vw,6rem)] leading-[0.9] text-primary sm:text-8xl xl:text-9xl">RUBÉN<br />TOBÍAS</h1>
+          <h1
+            class="font-cormorant-garamond text-[clamp(3.5rem,14vw,6rem)] leading-[0.9] text-primary sm:text-8xl xl:text-9xl"
+          >
+            RUBÉN<br />TOBÍAS
+          </h1>
           <p
             class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium uppercase tracking-[0.2em] text-primary/90 sm:text-base sm:tracking-[0.35em] md:text-xl"
           >
-            <span aria-hidden="true" class="h-px w-8 bg-primary/60 sm:w-12"></span>
-            Desarrollador Full-Stack
+            <span aria-hidden="true" class="h-px w-8 bg-primary/60 sm:w-12"
+            ></span>
+            Desarrollador Web
           </p>
           <ContactLinks />
         </div>
@@ -106,12 +129,29 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
           © 2026 Rubén Tobías · Logroño, La Rioja
         </p>
       </header>
-      <section id="panel-derecha" aria-label="Contenido de las secciones" class="min-h-0 h-auto overflow-visible lg:h-full lg:overflow-y-auto lg:pr-1">
+      <section
+        id="panel-derecha"
+        aria-label="Contenido de las secciones"
+        class="min-h-0 h-auto overflow-visible lg:h-full lg:overflow-y-auto lg:pr-1"
+      >
         <div id="panel-content">
-          <div id="panel-sobre-mi" role="tabpanel" aria-labelledby="tab-panel-sobre-mi" tabindex="0" data-section-panel hidden>
+          <div
+            id="panel-sobre-mi"
+            role="tabpanel"
+            aria-labelledby="tab-panel-sobre-mi"
+            tabindex="0"
+            data-section-panel
+            hidden
+          >
             <AboutMe />
           </div>
-          <div id="panel-proyectos" role="tabpanel" aria-labelledby="tab-panel-proyectos" tabindex="0" data-section-panel>
+          <div
+            id="panel-proyectos"
+            role="tabpanel"
+            aria-labelledby="tab-panel-proyectos"
+            tabindex="0"
+            data-section-panel
+          >
             <Proyects />
           </div>
         </div>
@@ -124,7 +164,9 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
       const wrapper = document.getElementById("panel-derecha");
       const content = document.getElementById("panel-content");
       const desktopQuery = window.matchMedia("(min-width: 1024px)");
-      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const reducedMotionQuery = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
       const bgVideo = document.querySelector<HTMLVideoElement>(".video-fondo");
 
       function applyReducedMotion() {
