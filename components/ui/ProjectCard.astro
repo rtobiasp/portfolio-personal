@@ -44,41 +44,35 @@ const remainingTechs = technologies.length - visibleTechs.length;
   {
     image && (
       <div class="relative overflow-hidden bg-black/30">
-        <Image
-          src={image}
-          alt={imageAlt}
-          class="h-auto w-full"
-        />
+        <Image src={image} alt={imageAlt} class="h-auto w-full" />
         <div
           aria-hidden="true"
-          class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+          class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent"
         />
-        {(hasWeb || hasGithub) && (
-          <div class="absolute right-4 top-4 flex gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
-            {hasWeb && (
-              <span class="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-md">
-                Live
-              </span>
-            )}
-          </div>
-        )}
       </div>
     )
   }
 
   <div class="flex flex-1 flex-col gap-4 p-6 md:p-7">
     <div class="flex flex-col gap-2">
-      <h3 class="font-cormorant-garamond text-2xl md:text-3xl leading-tight text-primary">
+      <h3
+        class="font-cormorant-garamond text-2xl md:text-3xl leading-tight text-primary"
+      >
         {title}
       </h3>
-      <p class="text-sm md:text-[15px] leading-relaxed text-primary/70 line-clamp-3">
+      <p
+        class="text-sm md:text-[15px] leading-relaxed text-primary/70 line-clamp-3"
+      >
         {description}
       </p>
     </div>
 
     {
       technologies.length > 0 && (
-        <ul aria-label={`Tecnologías usadas en ${title}`} class="flex flex-wrap gap-2">
+        <ul
+          aria-label={`Tecnologías usadas en ${title}`}
+          class="flex flex-wrap gap-2"
+        >
           {visibleTechs.map((tech) => (
             <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-primary/80 transition-colors duration-300 group-hover:border-white/15">
               {tech}
@@ -161,7 +155,7 @@ const remainingTechs = technologies.length - visibleTechs.length;
 
   <span
     aria-hidden="true"
-    class="pointer-events-none absolute inset-x-12 bottom-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+    class="pointer-events-none absolute inset-x-12 bottom-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
   ></span>
 </article>
 
