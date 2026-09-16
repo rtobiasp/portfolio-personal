@@ -5,6 +5,7 @@ import SectionNav from "../../components/ui/SectionNav.astro";
 
 import video_webm from "../media/background_video.webm";
 import video_mp4 from "../media/background_video.mp4";
+import Proyects from "../../components/Proyects.astro";
 ---
 
 <html lang="en">
@@ -16,22 +17,24 @@ import video_mp4 from "../media/background_video.mp4";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body class="overflow-hidden">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="none"
-      aria-hidden="true"
-      class="video-fondo"
-    >
-      <source src={video_webm} type="video/webm" />
-      <source src={video_mp4} type="video/mp4" />
-      Tu navegador no soporta vídeos en HTML5.
-    </video>
-    <main class="grid grid-cols-[60%_40%] h-screen p-20">
-      <section id="info" class="flex flex-col gap-10">
+  <body class="overflow-x-clip">
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+        class="video-fondo"
+      >
+        <source src={video_webm} type="video/webm" />
+        <source src={video_mp4} type="video/mp4" />
+        Tu navegador no soporta vídeos en HTML5.
+      </video>
+    </div>
+    <main class="grid h-screen grid-cols-[60%_40%] p-20">
+      <section id="info" class="flex min-h-0 flex-col gap-10">
         <div class="flex flex-col gap-6">
           <h1 class="text-9xl font-fold text-primary">RUBÉN<br />TOBÍAS</h1>
           <p
@@ -44,7 +47,31 @@ import video_mp4 from "../media/background_video.mp4";
         </div>
         <SectionNav />
       </section>
-      <section id="proyects" class="bg-amber-200/20"></section>
+      <section id="proyects" class="min-h-0 h-full overflow-y-auto pr-4">
+        <Proyects />
+      </section>
     </main>
+
+    <script>
+      import Lenis from "lenis";
+
+      const wrapper = document.getElementById("proyects");
+      const content = wrapper?.firstElementChild as HTMLElement | null;
+
+      if (wrapper && content) {
+        const lenis = new Lenis({
+          wrapper,
+          content,
+          autoRaf: true,
+          lerp: 0.09,
+          smoothWheel: true,
+        });
+
+        // Limpieza si Astro recarga / navega
+        document.addEventListener("astro:before-swap", () => lenis.destroy(), {
+          once: true,
+        });
+      }
+    </script>
   </body>
 </html>

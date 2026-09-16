@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from "astro";
+import ProjectCard from "./ui/ProjectCard.astro";
+
+const posts = Object.values(
+  import.meta.glob("/src/proyectos/*.md", { eager: true }),
+);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/proyectos/media/*.{jpeg,jpg,png,gif}",
+  { eager: true },
+);
+---
+
+<section aria-label="Listado de proyectos" class="flex flex-col gap-6">
+  <header class="flex items-end justify-between gap-4">
+    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-primary/60">
+      Proyectos
+    </h2>
+    <span class="text-xs uppercase tracking-[0.25em] text-primary/40">
+      {posts.length} proyectos
+    </span>
+  </header>
+
+  <nav>
+    <ul class="flex flex-col gap-6">
+      {
+        posts.map((post: any) => (
+          <li>
+            <ProjectCard
+              title={post.frontmatter.title}
+              description={post.frontmatter.description}
+              technologies={post.frontmatter.technologies ?? []}
+              image={images[post.frontmatter.img]?.default}
+              imageAlt={`Imagen de ${post.frontmatter.title}`}
+              linkWeb={post.frontmatter.link_web}
+              linkGithub={post.frontmatter.link_github}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</section>
