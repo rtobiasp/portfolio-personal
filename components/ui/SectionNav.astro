@@ -1,7 +1,7 @@
 ---
 interface NavItem {
   label: string;
-  href: string;
+  target: string;
 }
 
 interface Props {
@@ -11,31 +11,46 @@ interface Props {
 
 const {
   items = [
-    { label: "Sobre mí", href: "#sobre-mi" },
-    { label: "Proyectos", href: "#proyectos" },
+    { label: "Proyectos", target: "panel-proyectos" },
+    { label: "Sobre mí", target: "panel-sobre-mi" },
   ],
   class: className = "",
 } = Astro.props;
 ---
 
 <nav aria-label="Navegación principal" class={className}>
-  <ul class="flex flex-col gap-5">
+  <ul class="flex flex-col gap-5" role="list">
     {
-      items.map((item) => (
+      items.map((item, index) => (
         <li>
-          <a
-            href={item.href}
-            class="group flex w-fit items-center gap-4 rounded text-sm font-medium uppercase tracking-[0.25em] text-primary/60 transition-colors duration-300 hover:text-primary focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          <button
+            type="button"
+            data-section-btn={item.target}
+            data-active={index === 0 ? "true" : "false"}
+            aria-current={index === 0 ? "true" : undefined}
+            class="group flex w-fit items-center gap-4 rounded text-sm font-medium uppercase tracking-[0.25em] text-primary/60 transition-colors duration-300 hover:text-primary hover:cursor-pointer focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white data-[active=true]:text-primary"
           >
-            <span aria-hidden="true" class="relative flex h-4 w-4 items-center justify-center">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary/40 transition-all duration-300 ease-out group-hover:h-2.5 group-hover:w-2.5 group-hover:bg-primary group-focus-visible:h-2.5 group-focus-visible:w-2.5 group-focus-visible:bg-primary" />
+            <span
+              aria-hidden="true"
+              class="relative flex h-4 w-4 items-center justify-center"
+            >
+              <span class="dot h-1.5 w-1.5 rounded-full bg-primary/40 transition-all duration-300 ease-out group-hover:h-2.5 group-hover:w-2.5 group-hover:bg-primary" />
             </span>
             <span class="transition-transform duration-300 ease-out group-hover:translate-x-1">
               {item.label}
             </span>
-          </a>
+          </button>
         </li>
       ))
     }
   </ul>
 </nav>
+
+<style>
+  [data-section-btn][data-active="true"] .dot {
+    height: 0.625rem;
+    width: 0.625rem;
+    background-color: rgb(var(--color-primary, 255 255 255) / 1);
+    background-color: var(--color-primary, #fff);
+  }
+</style>

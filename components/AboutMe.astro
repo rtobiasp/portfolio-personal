@@ -1,0 +1,242 @@
+---
+const perfil = [
+  "Desarrollador Web orientado a resultados y adaptabilidad técnica.",
+  "Experimentado en desarrollo CMS, maquetación UI y pruebas de software. En constante evolución autodidacta con foco actual en Node.js y Astro para construir aplicaciones modernas, escalables y de alto rendimiento.",
+];
+
+const experiencia = [
+  {
+    empresa: "Brandcode S.L.",
+    puesto: "Desarrollador Web Frontend & CMS",
+    periodo: "Marzo 2026 — Agosto 2026",
+    duracion: "6 meses",
+    tareas: [
+      "Creación y adaptación de componentes e interfaces web para WordPress y Drupal a partir de diseños en Figma y Zeplin.",
+      "Implementación de cambios menores, nuevas secciones y ajustes a medida en WordPress, Drupal y PrestaShop.",
+      "Integración y desarrollo de módulos personalizados y externos para optimizar funcionalidades en sitios CMS.",
+      "Control del código fuente y colaboración mediante Git.",
+    ],
+  },
+  {
+    empresa: "Logical Rioja S.L.",
+    puesto: "Desarrollador .NET & QA Tester",
+    periodo: "Marzo 2025 — Junio 2025",
+    duracion: "4 meses",
+    tareas: [
+      "Corrección de errores y resolución de bugs en módulos de ERP desarrollados en C# y Visual Basic .NET.",
+      "Diseño y ejecución de pruebas unitarias automatizadas con xUnit.",
+      "Integración de flujos de testing y automatización en pipelines de Azure DevOps.",
+    ],
+  },
+];
+
+const formacion = [
+  {
+    titulo: "Grado Superior en Desarrollo de Aplicaciones Web",
+    centro: "IES Comercio",
+    periodo: "2025 — 2026",
+  },
+  {
+    titulo: "Grado Superior en Desarrollo de Aplicaciones Multiplataforma",
+    centro: "IES Comercio",
+    periodo: "2023 — 2025",
+  },
+];
+
+const habilidades = [
+  "Trabajo en equipo",
+  "Adaptabilidad y polivalencia",
+  "Compromiso y orientación a resultados",
+  "Mentalidad de crecimiento",
+  "Receptividad al feedback constructivo",
+];
+
+const idiomas = [
+  { idioma: "Español", nivel: "Nativo" },
+  { idioma: "Inglés", nivel: "Intermedio [ B2+ ]" },
+];
+
+const contacto = {
+  ubicacion: "Logroño, La Rioja",
+  email: "rtpfm19@gmail.com",
+  linkedin: {
+    href: "https://www.linkedin.com/in/ruben-tobias-pascual-38a30a431/",
+    label: "linkedin.com/in/ruben-tobias-pascual-38a30a431",
+  },
+};
+---
+
+<section id="sobre-mi" aria-label="Sobre mí" class="flex flex-col gap-6">
+  <article
+    class="group relative flex flex-col gap-8 overflow-hidden rounded-3xl border border-white/10 bg-black/45 p-6 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 ease-out hover:border-white/25 hover:bg-black/55 md:p-7"
+  >
+    {/* Cabecera */}
+    <div class="flex flex-col gap-2">
+      <p
+        class="text-sm font-medium uppercase tracking-[0.25em] text-primary/60"
+      >
+        Desarrollador web
+      </p>
+      <div class="flex flex-col gap-3 pt-2">
+        {
+          perfil.map((parrafo) => (
+            <p class="text-sm leading-relaxed text-primary/70 md:text-[15px]">
+              {parrafo}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <span
+      aria-hidden="true"
+      class="h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
+    ></span>
+
+    {/* Experiencia */}
+    <div class="flex flex-col gap-4">
+      <h4
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      >
+        Experiencia laboral
+      </h4>
+      <ol class="flex flex-col gap-6">
+        {
+          experiencia.map((item) => (
+            <li class="flex flex-col gap-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <p class="font-cormorant-garamond text-xl leading-tight text-primary">
+                  {item.puesto}
+                </p>
+                <p class="text-xs uppercase tracking-[0.2em] text-primary/40">
+                  {item.duracion}
+                </p>
+              </div>
+              <p class="text-sm font-medium text-primary/80">
+                {item.empresa}{" "}
+                <span class="font-normal text-primary/50">
+                  · {item.periodo}
+                </span>
+              </p>
+              <ul class="flex list-disc flex-col gap-1.5 pl-5 text-sm leading-relaxed text-primary/70">
+                {item.tareas.map((tarea) => (
+                  <li>{tarea}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <span
+      aria-hidden="true"
+      class="h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
+    ></span>
+
+    {/* Formación */}
+    <div class="flex flex-col gap-4">
+      <h4
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      >
+        Formación académica
+      </h4>
+      <ul class="flex flex-col gap-3">
+        {
+          formacion.map((item) => (
+            <li class="flex flex-col gap-0.5">
+              <p class="text-sm font-medium text-primary/90">{item.titulo}</p>
+              <p class="text-sm text-primary/60">
+                {item.centro} <span aria-hidden="true">·</span> {item.periodo}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <span
+      aria-hidden="true"
+      class="h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
+    ></span>
+
+    {/* Habilidades */}
+    <div class="flex flex-col gap-4">
+      <h4
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      >
+        Habilidades
+      </h4>
+      <ul aria-label="Habilidades" class="flex flex-wrap gap-2">
+        {
+          habilidades.map((habilidad) => (
+            <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-primary/80 transition-colors duration-300 group-hover:border-white/15">
+              {habilidad}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    {/* Idiomas */}
+    <div class="flex flex-col gap-4">
+      <h4
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      >
+        Idiomas
+      </h4>
+      <dl class="flex flex-col gap-2">
+        {
+          idiomas.map((item) => (
+            <div class="flex items-baseline gap-2 text-sm">
+              <dt class="font-medium text-primary/90">{item.idioma}</dt>
+              <dd class="text-primary/60">{item.nivel}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <span
+      aria-hidden="true"
+      class="h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
+    ></span>
+
+    {/* Contacto */}
+    <div class="flex flex-col gap-4">
+      <h4
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60"
+      >
+        Contacto
+      </h4>
+      <address class="flex flex-col gap-2 text-sm not-italic text-primary/70">
+        <p>{contacto.ubicacion}</p>
+        <a
+          href={`mailto:${contacto.email}`}
+          class="w-fit rounded text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          {contacto.email}
+        </a>
+        <a
+          href={contacto.linkedin.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-fit break-all rounded text-primary/80 underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          {contacto.linkedin.label}
+        </a>
+      </address>
+    </div>
+
+    <span
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-12 bottom-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+    ></span>
+  </article>
+</section>
+
+<style>
+  .font-cormorant-garamond {
+    font-family: var(--font-cormorant-garamond);
+  }
+</style>

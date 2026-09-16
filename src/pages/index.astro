@@ -6,6 +6,7 @@ import SectionNav from "../../components/ui/SectionNav.astro";
 import video_webm from "../media/background_video.webm";
 import video_mp4 from "../media/background_video.mp4";
 import Proyects from "../../components/Proyects.astro";
+import AboutMe from "../../components/AboutMe.astro";
 ---
 
 <html lang="en">
@@ -47,19 +48,27 @@ import Proyects from "../../components/Proyects.astro";
         </div>
         <SectionNav />
       </section>
-      <section id="proyects" class="min-h-0 h-full overflow-y-auto pr-4">
-        <Proyects />
+      <section id="panel-derecha" class="min-h-0 h-full overflow-y-auto pr-1">
+        <div id="panel-content">
+          <div id="panel-sobre-mi" data-section-panel hidden>
+            <AboutMe />
+          </div>
+          <div id="panel-proyectos" data-section-panel>
+            <Proyects />
+          </div>
+        </div>
       </section>
     </main>
 
     <script>
       import Lenis from "lenis";
 
-      const wrapper = document.getElementById("proyects");
-      const content = wrapper?.firstElementChild as HTMLElement | null;
+      const wrapper = document.getElementById("panel-derecha");
+      const content = document.getElementById("panel-content");
 
+      let lenis: Lenis | null = null;
       if (wrapper && content) {
-        const lenis = new Lenis({
+        lenis = new Lenis({
           wrapper,
           content,
           autoRaf: true,
@@ -68,10 +77,76 @@ import Proyects from "../../components/Proyects.astro";
         });
 
         // Limpieza si Astro recarga / navega
-        document.addEventListener("astro:before-swap", () => lenis.destroy(), {
+        document.addEventListener("astro:before-swap", () => lenis?.destroy(), {
           once: true,
         });
       }
+
+      const buttons = Array.from(
+        document.querySelectorAll<HTMLButtonElement>("[data-section-btn]"),
+      );
+      const panels = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-section-panel]"),
+      );
+
+      function showPanel(targetId: string) {
+        panels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.hidden = !isActive;
+          if (isActive) {
+            panel.classList.remove("section-enter");
+            // Reinicia la animación de entrada
+            void panel.offsetWidth;
+            panel.classList.add("section-enter");
+          }
+        });
+
+        buttons.forEach((button) => {
+          const isActive = button.dataset.sectionBtn === targetId;
+          button.dataset.active = isActive ? "true" : "false";
+          if (isActive) {
+            button.setAttribute("aria-current", "true");
+          } else {
+            button.removeAttribute("aria-current");
+          }
+        });
+
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          wrapper?.scrollTo({ top: 0 });
+        }
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.sectionBtn;
+          if (target) showPanel(target);
+        });
+      });
     </script>
+
+    <style>
+      .section-enter {
+        animation: section-enter 0.45s ease-out both;
+      }
+
+      @keyframes section-enter {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .section-enter {
+          animation: none;
+        }
+      }
+    </style>
   </body>
 </html>

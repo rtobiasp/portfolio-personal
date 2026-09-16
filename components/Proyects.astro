@@ -13,15 +13,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 ---
 
 <section aria-label="Listado de proyectos" class="flex flex-col gap-6">
-  <header class="flex items-end justify-between gap-4">
-    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-primary/60">
-      Proyectos
-    </h2>
-    <span class="text-xs uppercase tracking-[0.25em] text-primary/40">
-      {posts.length} proyectos
-    </span>
-  </header>
-
   <nav>
     <ul class="flex flex-col gap-6">
       {

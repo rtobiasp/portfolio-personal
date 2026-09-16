@@ -42,12 +42,12 @@ p, span, a {
   transform: scale(1.05);
 }
 
-#proyects {
+#panel-derecha {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-#proyects::-webkit-scrollbar {
+#panel-derecha::-webkit-scrollbar {
   display: none;
 }
 
