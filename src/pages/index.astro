@@ -1,5 +1,6 @@
 ---
 import "../../src/styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 import ContactLinks from "../../components/ui/ContactLinks.astro";
 import SectionNav from "../../components/ui/SectionNav.astro";
 
@@ -157,6 +158,8 @@ const ogImageUrl = `${SITE_URL}/og-cover.png`;
         </div>
       </section>
     </main>
+
+    <Analytics />
 
     <script>
       import Lenis from "lenis";
