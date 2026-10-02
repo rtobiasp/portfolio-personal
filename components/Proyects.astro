@@ -12,12 +12,20 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<section aria-labelledby="proyectos-titulo" class="flex min-w-0 flex-col gap-5 sm:gap-6">
-  <h2 id="proyectos-titulo" class="font-cormorant-garamond text-3xl leading-tight text-primary sm:text-4xl">Proyectos</h2>
+<section
+  aria-labelledby="proyectos-titulo"
+  class="flex min-w-0 flex-col gap-5 sm:gap-6"
+>
+  <h2
+    id="proyectos-titulo"
+    class="font-cormorant-garamond text-3xl leading-tight text-primary sm:text-4xl"
+  >
+    Proyectos
+  </h2>
   <div class="min-w-0">
     <ul class="flex min-w-0 flex-col gap-5 sm:gap-6">
       {
-        posts.map((post: any) => (
+        posts.map((post: any, index: number) => (
           <li>
             <ProjectCard
               title={post.frontmatter.title}
@@ -27,6 +35,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               imageAlt={`Imagen de ${post.frontmatter.title}`}
               linkWeb={post.frontmatter.link_web}
               linkGithub={post.frontmatter.link_github}
+              projectNumber={index + 1}
             />
           </li>
         ))
