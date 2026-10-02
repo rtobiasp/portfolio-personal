@@ -16,7 +16,9 @@ const github = {
 };
 ---
 
-<div class={`flex w-full min-w-0 flex-col gap-3 text-base drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg md:text-xl lg:text-2xl ${className}`}>
+<div
+  class={`flex w-full min-w-0 flex-col gap-3 text-base drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg md:text-xl lg:text-2xl ${className}`}
+>
   <div class="flex w-full min-w-0 max-w-full items-center gap-2">
     <a
       href={`mailto:${email}`}
@@ -39,7 +41,9 @@ const github = {
         <rect width="20" height="16" x="2" y="4" rx="2"></rect>
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
       </svg>
-      <span class="min-w-0 break-all text-[0.95em] sm:break-normal">{email}</span>
+      <span class="min-w-0 break-all text-[0.95em] sm:break-normal"
+        >{email}</span
+      >
     </a>
     <button
       type="button"
@@ -62,7 +66,8 @@ const github = {
         aria-hidden="true"
       >
         <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+        ></path>
       </svg>
       <svg
         data-icon="check"
@@ -81,7 +86,11 @@ const github = {
         <path d="M20 6 9 17l-5-5"></path>
       </svg>
     </button>
-    <span data-copy-feedback aria-live="polite" class="hidden text-sm text-emerald-300">Copiado</span>
+    <span
+      data-copy-feedback
+      aria-live="polite"
+      class="hidden text-sm text-emerald-300">Copiado</span
+    >
   </div>
 
   <a
@@ -104,12 +113,18 @@ const github = {
       aria-hidden="true"
       class="h-5 w-5 shrink-0 opacity-70 transition-opacity group-hover:opacity-100 sm:h-[22px] sm:w-[22px]"
     >
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <path
+        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+      ></path>
       <rect width="4" height="12" x="2" y="9"></rect>
       <circle cx="4" cy="4" r="2"></circle>
     </svg>
     <span class="min-w-0 truncate">{linkedin.label}</span>
-    <span aria-hidden="true" class="shrink-0 text-sm opacity-0 transition-opacity group-hover:opacity-60">↗</span>
+    <span
+      aria-hidden="true"
+      class="shrink-0 text-sm opacity-0 transition-opacity group-hover:opacity-60"
+      >↗</span
+    >
   </a>
 
   <a
@@ -138,12 +153,17 @@ const github = {
       <path d="M9 18c-4.51 2-5-2-7-2"></path>
     </svg>
     <span class="min-w-0 truncate">{github.label}</span>
-    <span aria-hidden="true" class="shrink-0 text-sm opacity-0 transition-opacity group-hover:opacity-60">↗</span>
+    <span
+      aria-hidden="true"
+      class="shrink-0 text-sm opacity-0 transition-opacity group-hover:opacity-60"
+      >↗</span
+    >
   </a>
 </div>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
+  const buttons =
+    document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
 
   for (const button of buttons) {
     button.addEventListener("click", async () => {
@@ -165,7 +185,9 @@ const github = {
 
       const copyIcon = button.querySelector<SVGElement>('[data-icon="copy"]');
       const checkIcon = button.querySelector<SVGElement>('[data-icon="check"]');
-      const feedback = button.parentElement?.querySelector<HTMLElement>("[data-copy-feedback]");
+      const feedback = button.parentElement?.querySelector<HTMLElement>(
+        "[data-copy-feedback]",
+      );
 
       copyIcon?.classList.add("hidden");
       checkIcon?.classList.remove("hidden");
